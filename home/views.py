@@ -39,9 +39,9 @@ class SpecificUserAPI(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def list(self, request, username):
-        print(username)
+
         filter_data = UserData.objects.filter(name=username).first()
-        print(type(filter_data))
+
         serializer = UserSerializer(instance=filter_data)
         return Response({"data": serializer.data}, status=status.HTTP_200_OK)
 
@@ -67,7 +67,7 @@ class SpecificStockAPI(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def list(self, request, ticker):
-        print(ticker)
+
         filter_data = Stockdata.objects.filter(ticker=ticker).first()
         data = {
             "ticker": filter_data.ticker,
